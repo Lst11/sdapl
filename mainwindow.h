@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <string>
+#include <hostelcontroller.h>
 
 using namespace std;
 
@@ -27,5 +28,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    HostelController *hostelController;
 };
 #endif // MAINWINDOW_H

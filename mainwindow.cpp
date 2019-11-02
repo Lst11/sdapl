@@ -1,8 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "hostelcontroller.h"
 #include "Hostel.h"
 #include <iostream>
 #include <string>
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QtSql/QSqlTableModel>
+#include <QDebug>
+#include <QSqlError>
+#include <QSqlRecord>
 
 using namespace std;
 
@@ -11,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    hostelController = new HostelController();
 }
 
 MainWindow::~MainWindow()
@@ -34,9 +42,12 @@ void MainWindow::on_save_hostel_clicked()
     if (name.empty() || country.empty() || city.empty() || price <= 0) {
         ui->hotel_label->setText("Input error! The fields must contain data!");
     } else {
+        ui->hotel_label->setText("");
         Hostel *hostel = new Hostel(name, price, country, city);
         hostel->show();
-        ui->hotel_label->setText("");
+
+        hostelController ->save(hostel);
+        hostelController -> showAll();
     }
 }
 

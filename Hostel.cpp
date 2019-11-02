@@ -31,4 +31,36 @@ Hostel::~Hostel()
     cout << "Destructor for Hostel\n";
 }
 
+const string &Hostel::getName() const {
+    return name;
+}
+
+void Hostel::setName(const string &name) {
+    Hostel::name = name;
+}
+
+double Hostel::getCostPerNight() const {
+    return costPerNight;
+}
+
+void Hostel::setCostPerNight(double costPerNight) {
+    Hostel::costPerNight = costPerNight;
+}
+
+const string &Hostel::getCountry() const {
+    return country;
+}
+
+void Hostel::setCountry(const string &country) {
+    Hostel::country = country;
+}
+
+const string &Hostel::getCity() const {
+    return city;
+}
+
+void Hostel::setCity(const string &city) {
+    Hostel::city = city;
+}
+
 

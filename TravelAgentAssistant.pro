@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,11 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Hostel.cpp \
+    hostelcontroller.cpp \
     main.cpp \
     mainwindow.cpp
 
+
 HEADERS += \
     Hostel.h \
+    hostelcontroller.h \
     mainwindow.h
 
 FORMS += \

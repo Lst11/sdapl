@@ -206,6 +206,34 @@
      </item>
     </layout>
    </widget>
+   <widget class="QPushButton" name="save_hostel">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>192</x>
+      <y>310</y>
+      <width>75</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>75</width>
+      <height>25</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>75</width>
+      <height>25</height>
+     </size>
+    </property>
+    <property name="text">
+     <string>Save</string>
+    </property>
+   </widget>
    <widget class="QPushButton" name="save_flight">
     <property name="geometry">
      <rect>
@@ -247,28 +275,41 @@
      </property>
     </widget>
    </widget>
-   <widget class="QSplitter" name="splitter_2">
+   <widget class="QLabel" name="hotel_label">
     <property name="geometry">
      <rect>
-      <x>16</x>
+      <x>20</x>
       <y>310</y>
-      <width>251</width>
-      <height>23</height>
+      <width>151</width>
+      <height>31</height>
      </rect>
     </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
+    <property name="sizeIncrement">
+     <size>
+      <width>0</width>
+      <height>25</height>
+     </size>
     </property>
-    <widget class="QLabel" name="hotel_label">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="save_hostel">
-     <property name="text">
-      <string>Save</string>
-     </property>
-    </widget>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
