@@ -9,13 +9,12 @@
 using namespace std;
 
 Hostel::Hostel(string name, int costPerNight, string country, string city) : name(std::move(name)),
-                                                                                costPerNight(
-                                                                                        costPerNight),
-                                                                                country(std::move(country)),
-                                                                                city(std::move(city)) {}
+                                                                             costPerNight(
+                                                                                     costPerNight),
+                                                                             country(std::move(country)),
+                                                                             city(std::move(city)) {}
 
-void Hostel::show()
-{
+void Hostel::show() {
     cout << "The name of the hostel is: ";
     cout << name;
     cout << "\nThe cost per night is: ";
@@ -26,8 +25,7 @@ void Hostel::show()
     cout << city << "\n";
 }
 
-Hostel::~Hostel()
-{
+Hostel::~Hostel() {
     cout << "Destructor for Hostel\n";
 }
 

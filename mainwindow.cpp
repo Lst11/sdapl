@@ -14,20 +14,16 @@
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
-{
+        : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
     hostelController = new HostelController();
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::on_save_hostel_clicked()
-{
+void MainWindow::on_save_hostel_clicked() {
     QString name_text = ui->hostel_name->toPlainText();
     string name = name_text.toLocal8Bit().constData();
 
@@ -46,8 +42,8 @@ void MainWindow::on_save_hostel_clicked()
         Hostel *hostel = new Hostel(name, price, country, city);
         hostel->show();
 
-        hostelController ->save(hostel);
-        hostelController -> showAll();
+        hostelController->save(hostel);
+        hostelController->showAll();
     }
 }
 
@@ -55,7 +51,6 @@ void MainWindow::on_save_hostel_clicked()
 //{
 //}
 
-void MainWindow::on_search_clicked()
-{
+void MainWindow::on_search_clicked() {
 
 }

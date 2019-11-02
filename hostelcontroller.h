@@ -5,8 +5,7 @@
 #include <iostream>
 #include <QtSql/QSqlQuery>
 
-class HostelController
-{
+class HostelController {
 private:
     QString create_hostel_table_query = "CREATE TABLE [IF NOT EXISTS] hostels ("
                                         "id INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -21,8 +20,11 @@ public:
     HostelController();
 
     void createTableHostel();
+
     void save(Hostel *hostel);
+
     void findAll();
+
     void showAll();
 
 };

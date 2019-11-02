@@ -11,8 +11,7 @@
 
 using namespace std;
 
-HostelController::HostelController()
-{
+HostelController::HostelController() {
     createTableHostel();
 }
 
@@ -33,10 +32,10 @@ void HostelController::createTableHostel() {
 }
 
 void HostelController::save(Hostel *hostel) {
-    QString hostel_to_insert = insert_hostel_query.arg(QString::fromStdString(hostel ->getName()))
-            .arg(hostel -> getCostPerNight())
-            .arg(QString::fromStdString(hostel ->getCountry()))
-            .arg(QString::fromStdString(hostel ->getCity()));
+    QString hostel_to_insert = insert_hostel_query.arg(QString::fromStdString(hostel->getName()))
+            .arg(hostel->getCostPerNight())
+            .arg(QString::fromStdString(hostel->getCountry()))
+            .arg(QString::fromStdString(hostel->getCity()));
     QSqlQuery query;
     bool successQuery = query.exec(hostel_to_insert);
     if (!successQuery) {
