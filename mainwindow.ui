@@ -14,16 +14,6 @@
    <string>Travel agent assistant</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QListView" name="listView">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>10</y>
-      <width>671</width>
-      <height>521</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QTextEdit" name="country_to_search">
     <property name="geometry">
      <rect>
@@ -264,14 +254,14 @@
       <string>Sort by:</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton_2">
+    <widget class="QRadioButton" name="sort_by_country">
      <property name="text">
-      <string>by date</string>
+      <string>country</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton">
+    <widget class="QRadioButton" name="sort_by_price">
      <property name="text">
-      <string>by name</string>
+      <string> price</string>
      </property>
     </widget>
    </widget>
@@ -358,6 +348,16 @@
     </property>
     <property name="text">
      <string>Create tour</string>
+    </property>
+   </widget>
+   <widget class="QTableView" name="table_view">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>20</y>
+      <width>651</width>
+      <height>451</height>
+     </rect>
     </property>
    </widget>
   </widget>

@@ -49,8 +49,55 @@ void HostelController::save(Hostel *hostel) {
     db.close();
 }
 
-void HostelController::findAll() {
-    //TODO: save to list;
+QSqlQueryModel* HostelController::findAllByPrice() {
+    db.open();
+    QSqlQuery query;
+    QSqlQueryModel * modal = new QSqlQueryModel();
+
+    if (!query.exec("SELECT * FROM hostel ORDER BY cost_per_night;")) {
+        qDebug() << "Select query doesn't work.";
+    }
+
+    modal->setQuery(query);
+    qDebug() << modal->rowCount();
+
+    db.close();
+
+    return modal;
+}
+
+QSqlQueryModel* HostelController::findAll() {
+    db.open();
+    QSqlQuery query;
+    QSqlQueryModel * modal = new QSqlQueryModel();
+
+    if (!query.exec("SELECT * FROM hostel")) {
+        qDebug() << "Select query doesn't work.";
+    }
+
+    modal->setQuery(query);
+    qDebug() << modal->rowCount();
+
+    db.close();
+
+    return modal;
+}
+
+QSqlQueryModel* HostelController::findAllByCountry() {
+    db.open();
+    QSqlQuery query;
+    QSqlQueryModel * modal = new QSqlQueryModel();
+
+    if (!query.exec("SELECT * FROM hostel ORDER BY country;")) {
+        qDebug() << "Select query doesn't work.";
+    }
+
+    modal->setQuery(query);
+    qDebug() << modal->rowCount();
+
+    db.close();
+
+    return modal;
 }
 
 void HostelController::showAll() {

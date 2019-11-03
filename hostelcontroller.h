@@ -3,6 +3,7 @@
 
 #include "Hostel.h"
 #include <iostream>
+#include <QtSql/QSqlTableModel>
 #include <QtSql/QSqlQuery>
 
 class HostelController {
@@ -24,7 +25,11 @@ public:
 
     void save(Hostel *hostel);
 
-    void findAll();
+    QSqlQueryModel* findAll();
+
+    QSqlQueryModel* findAllByPrice();
+
+    QSqlQueryModel* findAllByCountry();
 
     void showAll();
 

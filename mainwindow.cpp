@@ -18,6 +18,7 @@ using namespace std;
 MainWindow::MainWindow(QWidget *parent)
         : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
+
     secondWindow = new TourWindow();
     connect(secondWindow, &TourWindow::firstWindow, this, &MainWindow::show);
 
@@ -26,6 +27,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     hostelController = new HostelController(db);
     flightController = new FlightController(db);
+
+    ui->table_view->setModel(hostelController -> findAll());
 }
 
 MainWindow::~MainWindow() {
@@ -52,6 +55,7 @@ void MainWindow::on_save_hostel_clicked() {
 
         hostelController->save(hostel);
         hostelController->showAll();
+        ui->table_view->setModel(hostelController -> findAll());
     }
 }
 
@@ -85,10 +89,18 @@ void MainWindow::on_search_clicked() {
 
 }
 
-
-
 void MainWindow::on_create_tour_clicked()
 {
     secondWindow -> show();
     this->close();
+}
+
+void MainWindow::on_sort_by_price_clicked()
+{
+    ui->table_view->setModel(hostelController -> findAllByPrice());
+}
+
+void MainWindow::on_sort_by_country_clicked()
+{
+      ui->table_view->setModel(hostelController -> findAllByCountry());
 }

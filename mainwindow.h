@@ -34,6 +34,10 @@ private
 
     void on_create_tour_clicked();
 
+    void on_sort_by_price_clicked();
+
+    void on_sort_by_country_clicked();
+
 private:
     Ui::MainWindow *ui;
     TourWindow *secondWindow;
