@@ -27,9 +27,11 @@ public:
 
     QSqlQueryModel* findAll();
 
-    QSqlQueryModel* findAllByPrice();
+    QSqlQueryModel* findAllByCountry(string countryName);
 
-    QSqlQueryModel* findAllByCountry();
+    QSqlQueryModel* findAllSortedByPrice();
+
+    QSqlQueryModel* findAllSortedByCountry();
 
     void showAll();
 

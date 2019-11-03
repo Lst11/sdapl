@@ -28,11 +28,18 @@ MainWindow::MainWindow(QWidget *parent)
     hostelController = new HostelController(db);
     flightController = new FlightController(db);
 
-    ui->table_view->setModel(hostelController -> findAll());
+    ui->table_view->setModel(hostelController->findAll());
 }
 
 MainWindow::~MainWindow() {
     delete ui;
+}
+
+void MainWindow::on_search_clicked() {
+    QString country_text = ui->country_to_search->toPlainText();
+    string country = country_text.toLocal8Bit().constData();
+
+    ui->table_view->setModel(hostelController->findAllByCountry(country));
 }
 
 void MainWindow::on_save_hostel_clicked() {
@@ -55,17 +62,16 @@ void MainWindow::on_save_hostel_clicked() {
 
         hostelController->save(hostel);
         hostelController->showAll();
-        ui->table_view->setModel(hostelController -> findAll());
+        ui->table_view->setModel(hostelController->findAll());
     }
 }
 
-void MainWindow::on_save_flight_clicked()
-{
+void MainWindow::on_save_flight_clicked() {
     qDebug() << "Lets try to save flight";
-    QString to_country_text = ui-> flight_to ->toPlainText();
+    QString to_country_text = ui->flight_to->toPlainText();
     string toCountry = to_country_text.toLocal8Bit().constData();
 
-    QString from_country_text = ui-> flight_from ->toPlainText();
+    QString from_country_text = ui->flight_from->toPlainText();
     string fromCountry = from_country_text.toLocal8Bit().constData();
 
     double price = ui->flight_price->value();
@@ -81,26 +87,15 @@ void MainWindow::on_save_flight_clicked()
     }
 }
 
-//string MainWindow::convertToChar(QString text)
-//{
-//}
-
-void MainWindow::on_search_clicked() {
-
-}
-
-void MainWindow::on_create_tour_clicked()
-{
-    secondWindow -> show();
+void MainWindow::on_create_tour_clicked() {
+    secondWindow->show();
     this->close();
 }
 
-void MainWindow::on_sort_by_price_clicked()
-{
-    ui->table_view->setModel(hostelController -> findAllByPrice());
+void MainWindow::on_sort_by_price_clicked() {
+    ui->table_view->setModel(hostelController->findAllSortedByPrice());
 }
 
-void MainWindow::on_sort_by_country_clicked()
-{
-      ui->table_view->setModel(hostelController -> findAllByCountry());
+void MainWindow::on_sort_by_country_clicked() {
+    ui->table_view->setModel(hostelController->findAllSortedByCountry());
 }

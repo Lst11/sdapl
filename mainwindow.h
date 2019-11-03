@@ -24,11 +24,11 @@ public:
 private
     slots:
 
-    void on_search_clicked();
+            void
+
+    on_search_clicked();
 
     void on_save_hostel_clicked();
-
-    //string convertToChar(QString text);
 
     void on_save_flight_clicked();
 

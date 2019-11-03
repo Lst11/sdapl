@@ -5,8 +5,8 @@
 using namespace std;
 
 Flight::Flight(const string &toCountry, const string &fromCountry, double price) : toCountry(toCountry),
-                                                                                          fromCountry(fromCountry),
-                                                                                          price(price) {}
+                                                                                   fromCountry(fromCountry),
+                                                                                   price(price) {}
 
 Flight::~Flight() {
     cout << "Destructor for Flight\n";

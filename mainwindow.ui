@@ -359,6 +359,12 @@
       <height>451</height>
      </rect>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <attribute name="horizontalHeaderMinimumSectionSize">
+     <number>50</number>
+    </attribute>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

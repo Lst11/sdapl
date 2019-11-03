@@ -4,23 +4,28 @@
 #include <QDialog>
 
 namespace Ui {
-class TourWindow;
+    class TourWindow;
 }
 
-class TourWindow : public QDialog
-{
+class TourWindow : public QDialog {
     Q_OBJECT
 
 public:
     explicit TourWindow(QWidget *parent = nullptr);
+
     ~TourWindow();
 
-signals:
-    void firstWindow();
+    signals:
+            void
 
-private slots:
+    firstWindow();
 
-    void on_cancel_clicked();
+private
+    slots:
+
+            void
+
+    on_cancel_clicked();
 
 private:
     Ui::TourWindow *ui;
