@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <string>
 #include <hostelcontroller.h>
+#include <flightcontroller.h>
 
 using namespace std;
 
@@ -29,8 +30,12 @@ private
 
     //string convertToChar(QString text);
 
+    void on_save_flight_clicked();
+
 private:
     Ui::MainWindow *ui;
+    QSqlDatabase db;
     HostelController *hostelController;
+    FlightController *flightController;
 };
 #endif // MAINWINDOW_H

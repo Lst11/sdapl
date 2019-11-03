@@ -7,17 +7,18 @@
 
 class HostelController {
 private:
-    QString create_hostel_table_query = "CREATE TABLE [IF NOT EXISTS] hostels ("
+    QSqlDatabase db;
+    QString create_hostel_table_query = "CREATE TABLE IF NOT EXISTS hostel ("
                                         "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                                         "name VARCHAR(255), "
                                         "cost_per_night integer, "
                                         "country VARCHAR(255), "
                                         "city VARCHAR(255)"
                                         ");";
-    QString insert_hostel_query = " INSERT INTO hostels (name,cost_per_night,country,city)"
+    QString insert_hostel_query = " INSERT INTO hostel (name,cost_per_night,country,city)"
                                   "VALUES ('%1', %2, '%3', '%4' );";
 public:
-    HostelController();
+    HostelController(const QSqlDatabase &db);
 
     void createTableHostel();
 

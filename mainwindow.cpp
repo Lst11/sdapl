@@ -1,7 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "hostelcontroller.h"
+#include "flightcontroller.h"
 #include "Hostel.h"
+#include "flight.h"
 #include <iostream>
 #include <string>
 #include <QtSql/QSqlDatabase>
@@ -16,7 +18,12 @@ using namespace std;
 MainWindow::MainWindow(QWidget *parent)
         : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
-    hostelController = new HostelController();
+
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("db_name.sqlite555");
+
+    hostelController = new HostelController(db);
+    flightController = new FlightController(db);
 }
 
 MainWindow::~MainWindow() {
@@ -40,10 +47,31 @@ void MainWindow::on_save_hostel_clicked() {
     } else {
         ui->hotel_label->setText("");
         Hostel *hostel = new Hostel(name, price, country, city);
-        hostel->show();
 
         hostelController->save(hostel);
         hostelController->showAll();
+    }
+}
+
+void MainWindow::on_save_flight_clicked()
+{
+    qDebug() << "Lets try to save flight";
+    QString to_country_text = ui-> flight_to ->toPlainText();
+    string toCountry = to_country_text.toLocal8Bit().constData();
+
+    QString from_country_text = ui-> flight_from ->toPlainText();
+    string fromCountry = from_country_text.toLocal8Bit().constData();
+
+    double price = ui->flight_price->value();
+
+    if (toCountry.empty() || fromCountry.empty() || price <= 0) {
+        ui->flight_label->setText("Input error! The fields must contain data!");
+    } else {
+        ui->flight_label->setText("");
+        Flight *flight = new Flight(toCountry, fromCountry, price);
+
+        flightController->save(flight);
+        flightController->showAll();
     }
 }
 
@@ -54,3 +82,5 @@ void MainWindow::on_save_hostel_clicked() {
 void MainWindow::on_search_clicked() {
 
 }
+
+
