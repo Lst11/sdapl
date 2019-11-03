@@ -34,6 +34,8 @@ private
 
     void on_create_tour_clicked();
 
+    void on_load_table_clicked();
+    
 private:
     Ui::MainWindow *ui;
     TourWindow *secondWindow;

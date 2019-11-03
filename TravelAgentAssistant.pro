@@ -21,7 +21,8 @@ SOURCES += \
     flightcontroller.cpp \
     hostelcontroller.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    tourwindow.cpp
 
 
 HEADERS += \
@@ -29,10 +30,12 @@ HEADERS += \
     flight.h \
     flightcontroller.h \
     hostelcontroller.h \
-    mainwindow.h
+    mainwindow.h \
+    tourwindow.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    tourwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
