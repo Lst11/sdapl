@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>585</height>
+    <width>1008</width>
+    <height>589</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -340,8 +340,8 @@
    <widget class="QPushButton" name="create_tour">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>490</y>
+      <x>320</x>
+      <y>500</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -372,7 +372,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1000</width>
+     <width>1008</width>
      <height>21</height>
     </rect>
    </property>

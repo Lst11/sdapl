@@ -41,7 +41,7 @@ double Hostel::getCostPerNight() const {
     return costPerNight;
 }
 
-void Hostel::setCostPerNight(double costPerNight) {
+void Hostel::setCostPerNight(int costPerNight) {
     Hostel::costPerNight = costPerNight;
 }
 

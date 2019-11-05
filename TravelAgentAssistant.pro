@@ -22,7 +22,9 @@ SOURCES += \
     hostelcontroller.cpp \
     main.cpp \
     mainwindow.cpp \
-    tourwindow.cpp
+    tour.cpp \
+    tourwindow.cpp \
+    user.cpp
 
 
 HEADERS += \
@@ -31,7 +33,9 @@ HEADERS += \
     flightcontroller.h \
     hostelcontroller.h \
     mainwindow.h \
-    tourwindow.h
+    tour.h \
+    tourwindow.h \
+    user.h
 
 FORMS += \
     mainwindow.ui \

@@ -52,8 +52,21 @@ void FlightController::save(Flight *flight) {
     db.close();
 }
 
-void FlightController::findAll() {
-    //TODO: save to list;
+QSqlQueryModel *FlightController::findAll() {
+    db.open();
+    QSqlQuery query;
+    QSqlQueryModel *modal = new QSqlQueryModel();
+
+    if (!query.exec("SELECT * FROM flight")) {
+        qDebug() << "Select query doesn't work.";
+    }
+
+    modal->setQuery(query);
+    qDebug() << modal->rowCount();
+
+    db.close();
+
+    return modal;
 }
 
 void FlightController::showAll() {

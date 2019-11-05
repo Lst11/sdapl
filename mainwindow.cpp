@@ -19,14 +19,14 @@ MainWindow::MainWindow(QWidget *parent)
         : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
-    secondWindow = new TourWindow();
-    connect(secondWindow, &TourWindow::firstWindow, this, &MainWindow::show);
-
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("db_name.sqlite555");
 
     hostelController = new HostelController(db);
     flightController = new FlightController(db);
+
+    secondWindow = new TourWindow(nullptr, db);
+    connect(secondWindow, &TourWindow::firstWindow, this, &MainWindow::show);
 
     ui->table_view->setModel(hostelController->findAll());
 }
@@ -98,4 +98,9 @@ void MainWindow::on_sort_by_price_clicked() {
 
 void MainWindow::on_sort_by_country_clicked() {
     ui->table_view->setModel(hostelController->findAllSortedByCountry());
+}
+
+void MainWindow::on_table_view_doubleClicked(const QModelIndex &index) {
+    qDebug() << "Here we are";
+    qDebug() << index.data();
 }

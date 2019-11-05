@@ -25,13 +25,13 @@ public:
 
     void save(Hostel *hostel);
 
-    QSqlQueryModel* findAll();
+    QSqlQueryModel *findAll();
 
-    QSqlQueryModel* findAllByCountry(string countryName);
+    QSqlQueryModel *findAllByCountry(string countryName);
 
-    QSqlQueryModel* findAllSortedByPrice();
+    QSqlQueryModel *findAllSortedByPrice();
 
-    QSqlQueryModel* findAllSortedByCountry();
+    QSqlQueryModel *findAllSortedByCountry();
 
     void showAll();
 

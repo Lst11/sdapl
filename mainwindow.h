@@ -38,6 +38,8 @@ private
 
     void on_sort_by_country_clicked();
 
+    void on_table_view_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui;
     TourWindow *secondWindow;

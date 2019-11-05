@@ -27,7 +27,7 @@ public:
 
     double getCostPerNight() const;
 
-    void setCostPerNight(double costPerNight);
+    void setCostPerNight(int costPerNight);
 
     const string &getCountry() const;
 

@@ -3,6 +3,7 @@
 
 #include "flight.h"
 #include <iostream>
+#include <QtSql/QSqlTableModel>
 #include <QtSql/QSqlQuery>
 
 class FlightController {
@@ -26,7 +27,7 @@ public:
 
     void save(Flight *flight);
 
-    void findAll();
+    QSqlQueryModel *findAll();
 
     void showAll();
 };

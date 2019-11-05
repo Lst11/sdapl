@@ -2,6 +2,9 @@
 #define TOURWINDOW_H
 
 #include <QDialog>
+#include <hostelcontroller.h>
+#include <flightcontroller.h>
+#include "tour.h"
 
 namespace Ui {
     class TourWindow;
@@ -11,7 +14,7 @@ class TourWindow : public QDialog {
     Q_OBJECT
 
 public:
-    explicit TourWindow(QWidget *parent = nullptr);
+    TourWindow(QWidget *parent = nullptr, const QSqlDatabase &database = QSqlDatabase::database());
 
     ~TourWindow();
 
@@ -22,14 +25,22 @@ public:
 
 private
     slots:
-
             void
 
     on_cancel_clicked();
 
+    void on_hostel_table_view_doubleClicked(const QModelIndex &index);
+
+    void on_flight_table_view_doubleClicked(const QModelIndex &index);
+
+    void on_save_clicked();
+
 private:
     Ui::TourWindow *ui;
-
+    QSqlDatabase database;
+    HostelController *hostelController;
+    FlightController *flightController;
+    Tour *tour = new Tour();
 };
 
 #endif // TOURWINDOW_H
