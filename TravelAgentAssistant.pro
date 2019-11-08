@@ -23,6 +23,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     tour.cpp \
+    tourcontroller.cpp \
     tourwindow.cpp \
     user.cpp
 
@@ -34,6 +35,7 @@ HEADERS += \
     hostelcontroller.h \
     mainwindow.h \
     tour.h \
+    tourcontroller.h \
     tourwindow.h \
     user.h
 

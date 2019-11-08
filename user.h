@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <QDebug>
 
 using namespace std;
 
@@ -37,6 +38,9 @@ public:
     const string &getPhone() const;
 
     void setPhone(const string &phone);
+
+    friend QDebug operator<<(QDebug debug, const User *user);
+
 };
 
 #endif // USER_H

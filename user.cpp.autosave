@@ -47,7 +47,6 @@ QDebug operator<<(QDebug debug, const User *user) {
     QString surname =  QString::fromUtf8((user -> getSurname()).c_str());
     QString phone =  QString::fromUtf8((user -> getPhone()).c_str());
 
-    debug.nospace() << "User is: name: " << name << " surname: " << surname << " phone: " << phone;
-
+    debug.nospace() << "User: name: " << name << " surname: " << surname << " phone: " << phone;
     return debug.space();
 }

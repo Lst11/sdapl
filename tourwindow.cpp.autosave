@@ -75,6 +75,5 @@ void TourWindow::on_save_clicked() {
     tour->setPersonCounter(counter);
 
     qDebug()<< tour;
-    qDebug()<< user;
     //TODO: set all data to tour, show the cost and save to db by id;
 }

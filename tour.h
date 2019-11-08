@@ -3,12 +3,13 @@
 
 #include "user.h"
 #include "QDate"
+#include "QTextStream"
 
 
 class Tour {
 
 private:
-    User user;
+    User *user;
     int hostelId;
     int flightId;
     int nightCounter;
@@ -17,13 +18,11 @@ private:
 public:
     Tour();
 
-    Tour(const User &user, int hostelId, int flightId, int nightCounter, int personCounter);
-
     virtual ~Tour();
 
-    const User &getUser() const;
+    const User *Tour::getUser() const;
 
-    void setUser(const User &user);
+    void Tour::setUser(User *user);
 
     int getHostelId() const;
 
@@ -40,6 +39,8 @@ public:
     int getPersonCounter() const;
 
     void setPersonCounter(int personCounter);
+
+    friend QDebug operator<<(QDebug debug, const Tour *tour);
 };
 
 #endif // TOUR_H
