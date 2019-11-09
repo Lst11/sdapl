@@ -9,14 +9,14 @@
 class HostelController {
 private:
     QSqlDatabase db;
-    QString create_hostel_table_query = "CREATE TABLE IF NOT EXISTS hostel ("
-                                        "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                                        "name VARCHAR(255), "
-                                        "cost_per_night integer, "
-                                        "country VARCHAR(255), "
-                                        "city VARCHAR(255)"
+    QString create_hostel_table_query = "CREATE TABLE IF NOT EXISTS hostels ("
+                                        "hostel_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                                        "hostel_name VARCHAR(255), "
+                                        "hostel_cost_per_night integer, "
+                                        "hostel_country VARCHAR(255), "
+                                        "hostel_city VARCHAR(255)"
                                         ");";
-    QString insert_hostel_query = " INSERT INTO hostel (name,cost_per_night,country,city)"
+    QString insert_hostel_query = " INSERT INTO hostels (hostel_name,hostel_cost_per_night,hostel_country,hostel_city)"
                                   "VALUES ('%1', %2, '%3', '%4' );";
 public:
     HostelController(const QSqlDatabase &db);

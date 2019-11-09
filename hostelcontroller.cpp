@@ -25,9 +25,9 @@ void HostelController::createTableHostel() {
     bool successQuery = query.exec(create_hostel_table_query);
     if (!successQuery) {
         qDebug() << db.lastError() << endl;
-        qDebug() << "cant create table hostel!";
+        qDebug() << "cant create table hostels!";
     } else {
-        qDebug() << "created the table hostel!";
+        qDebug() << "created the table hostels!";
     }
     db.close();
 }
@@ -53,7 +53,7 @@ QSqlQueryModel *HostelController::findAll() {
     QSqlQuery query;
     QSqlQueryModel *modal = new QSqlQueryModel();
 
-    if (!query.exec("SELECT * FROM hostel")) {
+    if (!query.exec("SELECT * FROM hostels")) {
         qDebug() << "Select query doesn't work.";
     }
 
@@ -70,7 +70,8 @@ QSqlQueryModel *HostelController::findAllByCountry(string countryName) {
     QSqlQuery query;
     QSqlQueryModel *modal = new QSqlQueryModel();
 
-    QString search_query = "SELECT * FROM hostel WHERE country LIKE '" + QString::fromStdString(countryName) + "%'";
+    QString search_query =
+            "SELECT * FROM hostels WHERE hostel_country LIKE '" + QString::fromStdString(countryName) + "%'";
     if (!query.exec(search_query)) {
         qDebug() << "Select query by country doesn't work.";
     }
@@ -88,7 +89,7 @@ QSqlQueryModel *HostelController::findAllSortedByCountry() {
     QSqlQuery query;
     QSqlQueryModel *modal = new QSqlQueryModel();
 
-    if (!query.exec("SELECT * FROM hostel ORDER BY country;")) {
+    if (!query.exec("SELECT * FROM hostels ORDER BY hostel_country;")) {
         qDebug() << "Select query with sort by country doesn't work.";
     }
 
@@ -105,7 +106,7 @@ QSqlQueryModel *HostelController::findAllSortedByPrice() {
     QSqlQuery query;
     QSqlQueryModel *modal = new QSqlQueryModel();
 
-    if (!query.exec("SELECT * FROM hostel ORDER BY cost_per_night;")) {
+    if (!query.exec("SELECT * FROM hostels ORDER BY hostel_cost_per_night;")) {
         qDebug() << "Select query with sort by price doesn't work.";
     }
 
@@ -121,17 +122,17 @@ void HostelController::showAll() {
     db.open();
     QSqlQuery query;
 
-    if (!query.exec("SELECT * FROM hostel")) {
+    if (!query.exec("SELECT * FROM hostels")) {
         qDebug() << "Select query doesn't work.";
     }
     QSqlRecord rec = query.record();
 
     while (query.next()) {
-        int id = query.value(rec.indexOf("id")).toInt();
-        QString name = query.value(rec.indexOf("name")).toString();
-        int price = query.value(rec.indexOf("cost_per_night")).toInt();
-        QString country = query.value(rec.indexOf("country")).toString();
-        QString city = query.value(rec.indexOf("city")).toString();
+        int id = query.value(rec.indexOf("hostel_id")).toInt();
+        QString name = query.value(rec.indexOf("hostel_name")).toString();
+        int price = query.value(rec.indexOf("hostel_cost_per_night")).toInt();
+        QString country = query.value(rec.indexOf("hostel_country")).toString();
+        QString city = query.value(rec.indexOf("hostel_city")).toString();
         qDebug() << "id is " << id
                  << ". age is " << name
                  << ". price is " << price

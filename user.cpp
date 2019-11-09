@@ -41,13 +41,11 @@ void User::setPhone(const string &phone) {
     User::phone = phone;
 }
 
-
 QDebug operator<<(QDebug debug, const User *user) {
-    QString name =  QString::fromUtf8((user -> getName()).c_str());
-    QString surname =  QString::fromUtf8((user -> getSurname()).c_str());
-    QString phone =  QString::fromUtf8((user -> getPhone()).c_str());
+    QString name = QString::fromUtf8((user->getName()).c_str());
+    QString surname = QString::fromUtf8((user->getSurname()).c_str());
+    QString phone = QString::fromUtf8((user->getPhone()).c_str());
 
-    debug.nospace() << "User is: name: " << name << " surname: " << surname << " phone: " << phone;
-
+    debug.nospace() << "User: name: " << name << " surname: " << surname << " phone: " << phone;
     return debug.space();
 }

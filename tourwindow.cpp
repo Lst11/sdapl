@@ -10,7 +10,7 @@ TourWindow::TourWindow(QWidget *parent, const QSqlDatabase &database) :
 
     hostelController = new HostelController(database);
     flightController = new FlightController(database);
-
+    tourController = new TourController(database);
     ui->hostel_table_view->setModel(hostelController->findAll());
     ui->flight_table_view->setModel(flightController->findAll());
 }
@@ -63,18 +63,16 @@ void TourWindow::on_save_clicked() {
     } else {
         ui->tour_label->setText("");
 
-        // tourController-> save
+        User *user = new User(name,surname,phone);
+        tour->setUser(user);
+        tour->setNightCounter(days);
+        tour->setPersonCounter(counter);
+        qDebug()<< tour;
 
-//        flightController->save(flight);
-//        flightController->showAll();
+        //tourController-> save(tour);
+        //tourController -> showAll();
+
     }
-
-    User *user = new User(name,surname,phone);
-    tour->setUser(user);
-    tour->setNightCounter(days);
-    tour->setPersonCounter(counter);
-
-    qDebug()<< tour;
-    qDebug()<< user;
-    //TODO: set all data to tour, show the cost and save to db by id;
+    tourController -> showAll();
+    //TODO:show the cost and join tables by hostel and flight id;
 }

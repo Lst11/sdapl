@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <hostelcontroller.h>
 #include <flightcontroller.h>
+#include <tourcontroller.h>
 #include "tour.h"
 
 namespace Ui {
@@ -40,6 +41,7 @@ private:
     QSqlDatabase database;
     HostelController *hostelController;
     FlightController *flightController;
+    TourController *tourController;
     Tour *tour = new Tour();
 };
 

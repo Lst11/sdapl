@@ -9,14 +9,14 @@
 class FlightController {
 private:
     QSqlDatabase db;
-    QString create_flight_table_query = "CREATE TABLE IF NOT EXISTS flight ("
-                                        "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                                        "to_country VARCHAR(255), "
-                                        "from_country VARCHAR(255), "
-                                        "price real"
+    QString create_flight_table_query = "CREATE TABLE IF NOT EXISTS flights ("
+                                        "flight_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                                        "flight_to_country VARCHAR(255), "
+                                        "flight_from_country VARCHAR(255), "
+                                        "flight_price real"
                                         ");";
 
-    QString insert_flight_query = " INSERT INTO flight (to_country,from_country,price)"
+    QString insert_flight_query = " INSERT INTO flights (flight_to_country,flight_from_country,flight_price)"
                                   "VALUES ('%1', '%2', %3 );";
 
 

@@ -27,9 +27,9 @@ void FlightController::createTableFlight() {
     bool successQuery = query.exec(create_flight_table_query);
     if (!successQuery) {
         qDebug() << db.lastError() << endl;
-        qDebug() << "cant create table flight!";
+        qDebug() << "cant create table flights!";
     } else {
-        qDebug() << "created the table flight!";
+        qDebug() << "created the table flights!";
     }
     db.close();
 }
@@ -57,7 +57,7 @@ QSqlQueryModel *FlightController::findAll() {
     QSqlQuery query;
     QSqlQueryModel *modal = new QSqlQueryModel();
 
-    if (!query.exec("SELECT * FROM flight")) {
+    if (!query.exec("SELECT * FROM flights")) {
         qDebug() << "Select query doesn't work.";
     }
 
@@ -73,16 +73,16 @@ void FlightController::showAll() {
     db.open();
     QSqlQuery query;
 
-    if (!query.exec("SELECT * FROM flight")) {
+    if (!query.exec("SELECT * FROM flights")) {
         qDebug() << "Select query doesn't work.";
     }
     QSqlRecord rec = query.record();
 
     while (query.next()) {
-        int id = query.value(rec.indexOf("id")).toInt();
-        QString toCountry = query.value(rec.indexOf("to_country")).toString();
-        QString fromCountry = query.value(rec.indexOf("from_country")).toString();
-        double price = query.value(rec.indexOf("price")).toDouble();
+        int id = query.value(rec.indexOf("flight_id")).toInt();
+        QString toCountry = query.value(rec.indexOf("flight_to_country")).toString();
+        QString fromCountry = query.value(rec.indexOf("flight_from_country")).toString();
+        double price = query.value(rec.indexOf("flight_price")).toDouble();
         qDebug() << "id is " << id
                  << ". to_country is " << toCountry
                  << ". from_country is " << fromCountry

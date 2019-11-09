@@ -54,18 +54,9 @@ void Tour::setPersonCounter(int personCounter) {
     Tour::personCounter = personCounter;
 }
 
-//ostream &operator<<(ostream &os, const Tour &tour) {
-//    os << "user: " << tour.user << " hostelId: " << tour.hostelId << " flightId: " << tour.flightId << " nightCounter: "
-//       << tour.nightCounter << " personCounter: " << tour.personCounter;
-//    return os;
-//}
-
-
-
 QDebug operator<<(QDebug debug, const Tour *tour) {
-debug.nospace() << "Tour is: "  << tour -> getUser() << " hostelId: " << tour -> getHostelId()
-                << " flightId: " << tour -> getFlightId() << " nightCounter: "
-                << tour -> getNightCounter() << " personCounter: " << tour -> getPersonCounter () ;
-return debug.space();
+    debug.nospace() << "Tour: " << tour->getUser() << " hostelId: " << tour->getHostelId()
+                    << " flightId: " << tour->getFlightId() << " nightCounter: "
+                    << tour->getNightCounter() << " personCounter: " << tour->getPersonCounter();
+    return debug.space();
 }
-
