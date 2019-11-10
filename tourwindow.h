@@ -36,6 +36,14 @@ private
 
     void on_save_clicked();
 
+    void countPrice();
+
+    void on_people_counter_valueChanged(int arg1);
+
+    void on_date_from_userDateChanged(const QDate &date);
+
+    void on_date_to_userDateChanged(const QDate &date);
+
 private:
     Ui::TourWindow *ui;
     QSqlDatabase database;
@@ -43,7 +51,11 @@ private:
     FlightController *flightController;
     TourController *tourController;
     Tour *tour = new Tour();
-    int fullPrice = 0;
+
+    int flightPriceToOneSide = 0;
+    int hostelPricePerNight = 0;
+    int personCounter = 0;
+    int days = 0;
 };
 
 #endif // TOURWINDOW_H

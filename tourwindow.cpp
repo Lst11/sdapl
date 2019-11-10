@@ -11,6 +11,8 @@ TourWindow::TourWindow(QWidget *parent, const QSqlDatabase &database) :
     hostelController = new HostelController(database);
     flightController = new FlightController(database);
     tourController = new TourController(database);
+
+
     ui->hostel_table_view->setModel(hostelController->findAll());
     ui->flight_table_view->setModel(flightController->findAll());
 }
@@ -28,6 +30,7 @@ void TourWindow::on_flight_table_view_doubleClicked(const QModelIndex &index) {
     qDebug() << "TourWindow  - flight and here we are";
     qDebug() << "id is: " << index.data();
     this->tour->setFlightId(index.data().toInt());
+
 }
 
 void TourWindow::on_hostel_table_view_doubleClicked(const QModelIndex &index) {
@@ -74,4 +77,30 @@ void TourWindow::on_save_clicked() {
 
     }
     //TODO:show the cost;
+}
+
+void TourWindow::countPrice(){
+    int fullPrice = personCounter * days;
+    ui->price_info->setText(QString::number(fullPrice));
+}
+
+void TourWindow::on_people_counter_valueChanged(int arg1) {
+    personCounter = ui->people_counter->value();
+    countPrice();
+}
+
+void TourWindow::on_date_from_userDateChanged(const QDate &date){
+    QDate from = ui->date_from->date();
+    QDate to = ui->date_to->date();
+
+    days = from.daysTo(to);
+    countPrice();
+}
+
+void TourWindow::on_date_to_userDateChanged(const QDate &date){
+    QDate from = ui->date_from->date();
+    QDate to = ui->date_to->date();
+
+    days = from.daysTo(to);
+    countPrice();
 }
