@@ -11,9 +11,7 @@
 
 using namespace std;
 
-BaseController::BaseController(const QSqlDatabase &db) : db(db) {
-
-}
+BaseController::BaseController(const QSqlDatabase &db) : db(db) {}
 
 BaseController::~BaseController() {};
 

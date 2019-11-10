@@ -1,7 +1,3 @@
-//
-// Created by 1 on 20.10.2019.
-//
-
 #include "Hostel.h"
 #include <iostream>
 #include <utility>
@@ -60,5 +56,3 @@ const string &Hostel::getCity() const {
 void Hostel::setCity(const string &city) {
     Hostel::city = city;
 }
-
-

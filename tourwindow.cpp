@@ -61,25 +61,25 @@ void TourWindow::on_save_clicked() {
 
     int counter = ui->people_counter->value();
 
-    if (name.empty() || surname.empty() || phone.empty() || counter <= 0 || days <= 0L ) {
+    if (name.empty() || surname.empty() || phone.empty() || counter <= 0 || days <= 0L) {
         ui->tour_label->setText("Input error! The fields must contain data!");
     } else {
         ui->tour_label->setText("");
 
-        User *user = new User(name,surname,phone);
+        User *user = new User(name, surname, phone);
         tour->setUser(user);
         tour->setNightCounter(days);
         tour->setPersonCounter(counter);
-        qDebug()<< tour;
+        qDebug() << tour;
 
-        tourController-> save(tour);
-        tourController -> showAll();
+        tourController->save(tour);
+        tourController->showAll();
 
     }
     //TODO:show the cost;
 }
 
-void TourWindow::countPrice(){
+void TourWindow::countPrice() {
     int fullPrice = personCounter * days;
     ui->price_info->setText(QString::number(fullPrice));
 }
@@ -89,7 +89,7 @@ void TourWindow::on_people_counter_valueChanged(int arg1) {
     countPrice();
 }
 
-void TourWindow::on_date_from_userDateChanged(const QDate &date){
+void TourWindow::on_date_from_userDateChanged(const QDate &date) {
     QDate from = ui->date_from->date();
     QDate to = ui->date_to->date();
 
@@ -97,7 +97,7 @@ void TourWindow::on_date_from_userDateChanged(const QDate &date){
     countPrice();
 }
 
-void TourWindow::on_date_to_userDateChanged(const QDate &date){
+void TourWindow::on_date_to_userDateChanged(const QDate &date) {
     QDate from = ui->date_from->date();
     QDate to = ui->date_to->date();
 

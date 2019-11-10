@@ -26,14 +26,14 @@ QSqlQueryModel *FlightController::findAll() {
 }
 
 void FlightController::showAll() {
-    qDebug()<< "Show flights:";
+    qDebug() << "Show flights:";
     QSqlQueryModel *model = BaseController::findAll(select_flights_query);
 
     for (int i = 0; i < model->rowCount(); ++i) {
         QSqlRecord entity = model->record(i);
 
         int id = entity.value(0).toInt();
-        QString toCountry =  entity.value(1).toString();
+        QString toCountry = entity.value(1).toString();
         QString fromCountry = entity.value(2).toString();
         double price = entity.value(3).toDouble();
 

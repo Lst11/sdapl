@@ -30,7 +30,7 @@ QSqlQueryModel *TourController::findAll() {
 }
 
 void TourController::showAll() {
-    qDebug()<< "Show tours:";
+    qDebug() << "Show tours:";
     QSqlQueryModel *model = BaseController::findAll(select_tours_query);
 
     for (int i = 0; i < model->rowCount(); ++i) {

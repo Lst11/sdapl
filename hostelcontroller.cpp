@@ -47,7 +47,7 @@ QSqlQueryModel *HostelController::findAllSortedByPrice() {
 }
 
 void HostelController::showAll() {
-    qDebug()<< "Show hostels:";
+    qDebug() << "Show hostels:";
     QSqlQueryModel *model = BaseController::findAll(select_hostels_query);
 
     for (int i = 0; i < model->rowCount(); ++i) {

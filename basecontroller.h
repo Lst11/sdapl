@@ -4,8 +4,7 @@
 #include <QtSql/QSqlTableModel>
 #include <QtSql/QSqlQuery>
 
-class BaseController
-{
+class BaseController {
 private:
     QSqlDatabase db;
 
@@ -19,18 +18,6 @@ public:
     void insert(QString insert_query);
 
     QSqlQueryModel *findAll(QString select_query);
-
-//    virtual void showTableName()=0;
-
-//    QSqlQueryModel *findAll();
-
-//    QSqlQueryModel *findAllByCountry(string countryName);
-
-//    QSqlQueryModel *findAllSortedByPrice();
-
-//    QSqlQueryModel *findAllSortedByCountry();
-
-//    void showAll();
 };
 
 #endif // BASECONTROLLER_H

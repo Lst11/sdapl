@@ -7,7 +7,7 @@
 #include <QtSql/QSqlTableModel>
 #include <QtSql/QSqlQuery>
 
-class FlightController: public BaseController {
+class FlightController : public BaseController {
 private:
     QString create_flight_table_query = "CREATE TABLE IF NOT EXISTS flights ("
                                         "flight_id INTEGER PRIMARY KEY AUTOINCREMENT, "

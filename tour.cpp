@@ -11,7 +11,7 @@ using namespace std;
 Tour::Tour() {}
 
 Tour::~Tour() {
-    cout << "Destructor for Tour\n";
+    qDebug() << "Destructor for Tour";
 }
 
 const User *Tour::getUser() const {

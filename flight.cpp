@@ -1,5 +1,6 @@
 #include "flight.h"
 
+#include <QDebug>
 #include <iostream>
 
 using namespace std;
@@ -9,7 +10,7 @@ Flight::Flight(const string &toCountry, const string &fromCountry, double price)
                                                                                    price(price) {}
 
 Flight::~Flight() {
-    cout << "Destructor for Flight\n";
+    qDebug() << "Destructor for Flight";
 }
 
 void Flight::show() {

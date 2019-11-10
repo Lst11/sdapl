@@ -7,7 +7,7 @@
 #include <QtSql/QSqlTableModel>
 #include <QtSql/QSqlQuery>
 
-class HostelController: public BaseController {
+class HostelController : public BaseController {
 private:
     QString create_hostel_table_query = "CREATE TABLE IF NOT EXISTS hostels ("
                                         "hostel_id INTEGER PRIMARY KEY AUTOINCREMENT, "
