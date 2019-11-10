@@ -20,10 +20,11 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("db_name.sqlite555");
+    db.setDatabaseName("db_name.sqlite55");
 
     hostelController = new HostelController(db);
     flightController = new FlightController(db);
+
 
     secondWindow = new TourWindow(nullptr, db);
     connect(secondWindow, &TourWindow::firstWindow, this, &MainWindow::show);

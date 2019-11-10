@@ -1,5 +1,4 @@
 #include "tourcontroller.h"
-#include <iostream>
 #include <string>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
@@ -10,32 +9,11 @@
 
 using namespace std;
 
-TourController::TourController(const QSqlDatabase &db) : db(db) {
-    createTableTours();
-}
-
-void TourController::createTableTours() {
-
-    db.open();
-    if (!db.open()) {
-        qDebug() << db.lastError().text();
-        qDebug() << "cant open connection";
-    }
-
-    QSqlQuery query;
-    bool successQuery = query.exec(create_tours_table_query);
-    if (!successQuery) {
-        qDebug() << db.lastError() << endl;
-        qDebug() << "cant create table tours!";
-    } else {
-        qDebug() << "created the table tours!";
-    }
-    db.close();
+TourController::TourController(const QSqlDatabase &db) : BaseController(db) {
+    createTable(create_tours_table_query);
 }
 
 void TourController::save(Tour *tour) {
-    db.open();
-
     QString tour_to_insert = insert_tour_query.arg(QString::fromStdString(tour->getUser()->getName()))
             .arg(QString::fromStdString(tour->getUser()->getSurname()))
             .arg(QString::fromStdString(tour->getUser()->getPhone()))
@@ -44,60 +22,29 @@ void TourController::save(Tour *tour) {
             .arg(tour->getNightCounter())
             .arg(tour->getPersonCounter());
 
-    QSqlQuery query;
-    bool successQuery = query.exec(tour_to_insert);
-    if (!successQuery) {
-        qDebug() << db.lastError() << endl;
-        qDebug() << "Can't save the tour to database!";
-    } else {
-        qDebug() << "The tour was saved to database!";
-    }
-    db.close();
+    insert(tour_to_insert);
 }
 
 QSqlQueryModel *TourController::findAll() {
-    db.open();
-    QSqlQuery query;
-    QSqlQueryModel *modal = new QSqlQueryModel();
-
-    if (!query.exec("SELECT * FROM tours")) {
-        qDebug() << "Select query doesn't work.";
-    }
-
-    modal->setQuery(query);
-    qDebug() << modal->rowCount();
-
-    db.close();
-
-    return modal;
+    return BaseController::findAll(select_tours_query);
 }
 
 void TourController::showAll() {
-    db.open();
-    QSqlQuery query;
+    qDebug()<< "Show tours:";
+    QSqlQueryModel *model = BaseController::findAll(select_tours_query);
 
-//    if (!query.exec("SELECT * FROM tours")) {
-//        qDebug() << "Select query doesn't work.";
-//    }
+    for (int i = 0; i < model->rowCount(); ++i) {
+        QSqlRecord entity = model->record(i);
 
-    if (!query.exec("SELECT * FROM tours "
-                    "INNER JOIN hostels ON hostels.hostel_id = tours.tour_hostel_id "
-                    "INNER JOIN flights ON flights.flight_id = tours.tour_flight_id")) {
-        qDebug() << "Select query doesn't work.";
-    }
+        int id = entity.value(0).toInt();
+        QString userName = entity.value(1).toString();
+        QString userSurname = entity.value(2).toString();
+        QString userPhone = entity.value(3).toString();
 
-    QSqlRecord rec = query.record();
-
-    while (query.next()) {
-        int id = query.value(rec.indexOf("tour_id")).toInt();
-        QString userName = query.value(rec.indexOf("user_name")).toString();
-        QString userSurname = query.value(rec.indexOf("user_surname")).toString();
-        QString userPhone = query.value(rec.indexOf("user_phone")).toString();
-
-        int hostelId = query.value(rec.indexOf("tour_hostel_id")).toInt();
-        int flightId = query.value(rec.indexOf("tour_flight_id")).toInt();
-        int days = query.value(rec.indexOf("tour_days")).toInt();
-        int persons = query.value(rec.indexOf("tour_person_counter")).toInt();
+        int hostelId = entity.value(4).toInt();
+        int flightId = entity.value(5).toInt();
+        int days = entity.value(6).toInt();
+        int persons = entity.value(7).toInt();
 
         qDebug() << "id is " << id
                  << ". user name: " << userName
@@ -108,5 +55,4 @@ void TourController::showAll() {
                  << ". days is: " << days
                  << ". persons" << persons;
     }
-    db.close();
 }

@@ -43,6 +43,7 @@ private:
     FlightController *flightController;
     TourController *tourController;
     Tour *tour = new Tour();
+    int fullPrice = 0;
 };
 
 #endif // TOURWINDOW_H

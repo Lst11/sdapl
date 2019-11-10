@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Hostel.cpp \
+    basecontroller.cpp \
     flight.cpp \
     flightcontroller.cpp \
     hostelcontroller.cpp \
@@ -30,6 +31,7 @@ SOURCES += \
 
 HEADERS += \
     Hostel.h \
+    basecontroller.h \
     flight.h \
     flightcontroller.h \
     hostelcontroller.h \

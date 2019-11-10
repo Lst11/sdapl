@@ -69,10 +69,9 @@ void TourWindow::on_save_clicked() {
         tour->setPersonCounter(counter);
         qDebug()<< tour;
 
-        //tourController-> save(tour);
-        //tourController -> showAll();
+        tourController-> save(tour);
+        tourController -> showAll();
 
     }
-    tourController -> showAll();
-    //TODO:show the cost and join tables by hostel and flight id;
+    //TODO:show the cost;
 }
