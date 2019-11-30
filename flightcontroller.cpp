@@ -25,21 +25,27 @@ QSqlQueryModel *FlightController::findAll() {
     return BaseController::findAll(select_flights_query);
 }
 
+Flight *FlightController::findById(int flightId){
+    QString select_flight_by_id_query = find_by_id_flight_query.arg(flightId);
+    QSqlQueryModel * model = BaseController::findAll(select_flight_by_id_query);
+    return convertToFlight(model -> record(0));
+}
+
 void FlightController::showAll() {
     qDebug() << "Show flights:";
     QSqlQueryModel *model = BaseController::findAll(select_flights_query);
 
     for (int i = 0; i < model->rowCount(); ++i) {
         QSqlRecord entity = model->record(i);
-
-        int id = entity.value(0).toInt();
-        QString toCountry = entity.value(1).toString();
-        QString fromCountry = entity.value(2).toString();
-        double price = entity.value(3).toDouble();
-
-        qDebug() << "id is " << id
-                 << ". to_country is " << toCountry
-                 << ". from_country is " << fromCountry
-                 << ". price" << price;
+        convertToFlight(entity);
     }
+}
+
+Flight *FlightController::convertToFlight(QSqlRecord entity){
+    qDebug() << entity;
+    int id = entity.value(0).toInt();
+    QString toCountry = entity.value(1).toString();
+    QString fromCountry = entity.value(2).toString();
+    double price = entity.value(3).toDouble();
+    return new Flight(toCountry.toLocal8Bit().constData(), fromCountry.toLocal8Bit().constData(), price);
 }

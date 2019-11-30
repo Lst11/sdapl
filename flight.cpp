@@ -45,5 +45,3 @@ double Flight::getPrice() const {
 void Flight::setPrice(double price) {
     Flight::price = price;
 }
-
-

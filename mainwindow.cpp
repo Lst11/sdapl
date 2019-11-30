@@ -20,14 +20,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("db_name.sqlite55");
+    db.setDatabaseName("db_name.sqlite");
 
     hostelController = new HostelController(db);
     flightController = new FlightController(db);
-
-
-    secondWindow = new TourWindow(nullptr, db);
-    connect(secondWindow, &TourWindow::firstWindow, this, &MainWindow::show);
 
     ui->table_view->setModel(hostelController->findAll());
 }
@@ -89,6 +85,8 @@ void MainWindow::on_save_flight_clicked() {
 }
 
 void MainWindow::on_create_tour_clicked() {
+    secondWindow = new TourWindow(nullptr, db);
+    connect(secondWindow, &TourWindow::firstWindow, this, &MainWindow::show);
     secondWindow->show();
     this->close();
 }

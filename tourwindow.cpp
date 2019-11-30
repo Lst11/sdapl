@@ -2,6 +2,8 @@
 #include "ui_tourwindow.h"
 #include <QDebug>
 
+using namespace std;
+
 TourWindow::TourWindow(QWidget *parent, const QSqlDatabase &database) :
         QDialog(parent),
         ui(new Ui::TourWindow),
@@ -27,16 +29,20 @@ void TourWindow::on_cancel_clicked() {
 }
 
 void TourWindow::on_flight_table_view_doubleClicked(const QModelIndex &index) {
-    qDebug() << "TourWindow  - flight and here we are";
-    qDebug() << "id is: " << index.data();
-    this->tour->setFlightId(index.data().toInt());
-
+    int item_id = find_id_from_table(index, ui->flight_table_view);
+    this->tour->setFlightId(item_id);
+    countPrice();
 }
+
+
+
 
 void TourWindow::on_hostel_table_view_doubleClicked(const QModelIndex &index) {
     qDebug() << "TourWindow  - hostel and here we are";
-    qDebug() << "id is: " << index.data();
-    this->tour->setHostelId(index.data().toInt());
+
+    int item_id = find_id_from_table(index, ui->hostel_table_view);
+    this->tour->setHostelId(item_id);
+    countPrice();
 }
 
 void TourWindow::on_save_clicked() {
@@ -45,11 +51,11 @@ void TourWindow::on_save_clicked() {
     QDate to = ui->date_to->date();
     QString date = to.toString();
 
-    //Days counter
+    //Days counter;
     qDebug() << "There are " << from.daysTo(to) << endl;
     int days = from.daysTo(to);
 
-    //user data
+    //Customer data;
     QString name_text = ui->name_text->toPlainText();
     string name = name_text.toLocal8Bit().constData();
 
@@ -61,8 +67,8 @@ void TourWindow::on_save_clicked() {
 
     int counter = ui->people_counter->value();
 
-    if (name.empty() || surname.empty() || phone.empty() || counter <= 0 || days <= 0L) {
-        ui->tour_label->setText("Input error! The fields must contain data!");
+    if (tour->getHostelId() == 0 || name.empty() || surname.empty() || phone.empty() || counter <= 0 || days <= 0L) {
+        ui->tour_label->setText("Input error! The fields must contain data and at least hostel should be selected!");
     } else {
         ui->tour_label->setText("");
 
@@ -76,11 +82,25 @@ void TourWindow::on_save_clicked() {
         tourController->showAll();
 
     }
-    //TODO:show the cost;
 }
 
 void TourWindow::countPrice() {
-    int fullPrice = personCounter * days;
+    qDebug() << "Counting price";
+
+    int flightPrice = 0;
+    if(tour->getFlightId() > 0 ){
+        Flight  *flight = flightController ->findById(tour->getFlightId());
+        flightPrice = flight -> getPrice();
+    }
+
+    int hostelPrice = 0;
+    if(tour->getHostelId() > 0 ){
+        qDebug() << "Counting price";
+        Hostel  *hostel = hostelController ->findById(tour->getHostelId());
+        hostelPrice = hostel -> getCostPerNight();
+    }
+
+    int fullPrice = personCounter * (days * hostelPrice + flightPrice);
     ui->price_info->setText(QString::number(fullPrice));
 }
 
@@ -103,4 +123,19 @@ void TourWindow::on_date_to_userDateChanged(const QDate &date) {
 
     days = from.daysTo(to);
     countPrice();
+}
+
+int TourWindow::find_id_from_table(const QModelIndex &index, QTableView *tableView){
+    QItemSelectionModel * selectModel = tableView ->selectionModel();
+    QModelIndexList indexes = selectModel->selectedIndexes();
+    for(auto index : indexes){
+        int row = index.row();
+        QString tmp = tableView->model()->data(tableView->model()->index(row,0)).toString();
+        if ( row != -1 )
+        {
+            qDebug() << "id is: " << tmp;
+            return tmp.toInt();
+        }
+        break;
+    }
 }

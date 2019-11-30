@@ -21,6 +21,8 @@ private:
 
     QString select_hostels_query = "SELECT * FROM hostels";
 
+    QString find_by_id_hostel_query = "SELECT * FROM hostels WHERE hostel_id = %1";
+
 public:
     HostelController(const QSqlDatabase &db);
 
@@ -34,7 +36,13 @@ public:
 
     QSqlQueryModel *findAllSortedByCountry();
 
+    Hostel *findById(int hostelId);
+
     void showAll();
+
+private:
+
+    Hostel *convertToHostel(QSqlRecord entity);
 };
 
 #endif // HOSTELCONTROLLER_H

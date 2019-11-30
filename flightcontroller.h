@@ -21,6 +21,8 @@ private:
 
     QString select_flights_query = "SELECT * FROM flights";
 
+    QString find_by_id_flight_query = "SELECT * FROM flights WHERE flight_id = %1";
+
 public:
     FlightController(const QSqlDatabase &db);
 
@@ -28,7 +30,13 @@ public:
 
     QSqlQueryModel *findAll();
 
+    Flight *findById(int flightId);
+
     void showAll();
+
+private:
+
+    Flight *convertToFlight(QSqlRecord entity);
 };
 
 #endif // FLIGHTCONTROLLER_H

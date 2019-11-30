@@ -2,6 +2,8 @@
 #define TOURWINDOW_H
 
 #include <QDialog>
+#include <QItemSelectionModel>
+#include <QTableView>
 #include <hostelcontroller.h>
 #include <flightcontroller.h>
 #include <tourcontroller.h>
@@ -43,6 +45,8 @@ private
     void on_date_from_userDateChanged(const QDate &date);
 
     void on_date_to_userDateChanged(const QDate &date);
+
+    int find_id_from_table(const QModelIndex &index, QTableView *tableView);
 
 private:
     Ui::TourWindow *ui;

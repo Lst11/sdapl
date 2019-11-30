@@ -20,9 +20,9 @@ public:
 
     virtual ~Tour();
 
-    const User *Tour::getUser() const;
+    const User *getUser() const;
 
-    void Tour::setUser(User *user);
+    void setUser(User *user);
 
     int getHostelId() const;
 
