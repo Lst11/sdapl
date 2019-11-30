@@ -104,8 +104,7 @@ void MainWindow::on_table_view_doubleClicked(const QModelIndex &index) {
     qDebug() << index.data();
 }
 
-void MainWindow::on_show_tours_clicked()
-{
+void MainWindow::on_show_tours_clicked() {
     thirdWindow = new TourTableWindow(nullptr, db);
     connect(thirdWindow, &TourTableWindow::firstWindow, this, &MainWindow::show);
     thirdWindow->show();

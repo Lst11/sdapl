@@ -6,11 +6,10 @@
 #include <tourcontroller.h>
 
 namespace Ui {
-class TourTableWindow;
+    class TourTableWindow;
 }
 
-class TourTableWindow : public QDialog
-{
+class TourTableWindow : public QDialog {
     Q_OBJECT
 
 public:
@@ -25,7 +24,9 @@ public:
 
 private
     slots:
-            void on_cancel_button_clicked();
+            void
+
+    on_cancel_button_clicked();
 
 private:
     Ui::TourTableWindow *ui;

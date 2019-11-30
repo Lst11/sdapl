@@ -25,10 +25,10 @@ QSqlQueryModel *FlightController::findAll() {
     return BaseController::findAll(select_flights_query);
 }
 
-Flight *FlightController::findById(int flightId){
+Flight *FlightController::findById(int flightId) {
     QString select_flight_by_id_query = find_by_id_flight_query.arg(flightId);
-    QSqlQueryModel * model = BaseController::findAll(select_flight_by_id_query);
-    return convertToFlight(model -> record(0));
+    QSqlQueryModel *model = BaseController::findAll(select_flight_by_id_query);
+    return convertToFlight(model->record(0));
 }
 
 void FlightController::showAll() {
@@ -41,7 +41,7 @@ void FlightController::showAll() {
     }
 }
 
-Flight *FlightController::convertToFlight(QSqlRecord entity){
+Flight *FlightController::convertToFlight(QSqlRecord entity) {
     qDebug() << entity;
     int id = entity.value(0).toInt();
     QString toCountry = entity.value(1).toString();

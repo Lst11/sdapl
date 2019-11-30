@@ -14,7 +14,6 @@ TourWindow::TourWindow(QWidget *parent, const QSqlDatabase &database) :
     flightController = new FlightController(database);
     tourController = new TourController(database);
 
-
     ui->hostel_table_view->setModel(hostelController->findAll());
     ui->flight_table_view->setModel(flightController->findAll());
 }
@@ -85,16 +84,16 @@ void TourWindow::countPrice() {
     qDebug() << "Counting price";
 
     int flightPrice = 0;
-    if(tour->getFlightId() > 0 ){
-        Flight  *flight = flightController ->findById(tour->getFlightId());
-        flightPrice = flight -> getPrice();
+    if (tour->getFlightId() > 0) {
+        Flight *flight = flightController->findById(tour->getFlightId());
+        flightPrice = flight->getPrice();
     }
 
     int hostelPrice = 0;
-    if(tour->getHostelId() > 0 ){
+    if (tour->getHostelId() > 0) {
         qDebug() << "Counting price";
-        Hostel  *hostel = hostelController ->findById(tour->getHostelId());
-        hostelPrice = hostel -> getCostPerNight();
+        Hostel *hostel = hostelController->findById(tour->getHostelId());
+        hostelPrice = hostel->getCostPerNight();
     }
 
     int fullPrice = personCounter * (days * hostelPrice + flightPrice);
@@ -122,14 +121,13 @@ void TourWindow::on_date_to_userDateChanged(const QDate &date) {
     countPrice();
 }
 
-int TourWindow::find_id_from_table(const QModelIndex &index, QTableView *tableView){
-    QItemSelectionModel * selectModel = tableView ->selectionModel();
+int TourWindow::find_id_from_table(const QModelIndex &index, QTableView *tableView) {
+    QItemSelectionModel *selectModel = tableView->selectionModel();
     QModelIndexList indexes = selectModel->selectedIndexes();
-    for(auto index : indexes){
+    for (auto index : indexes) {
         int row = index.row();
-        QString tmp = tableView->model()->data(tableView->model()->index(row,0)).toString();
-        if ( row != -1 )
-        {
+        QString tmp = tableView->model()->data(tableView->model()->index(row, 0)).toString();
+        if (row != -1) {
             qDebug() << "id is: " << tmp;
             return tmp.toInt();
         }

@@ -15,13 +15,11 @@ TourTableWindow::TourTableWindow(QWidget *parent, const QSqlDatabase &database) 
     ui->tour_table_view->setModel(tourController->findAll());
 }
 
-TourTableWindow::~TourTableWindow()
-{
+TourTableWindow::~TourTableWindow() {
     delete ui;
 }
 
-void TourTableWindow::on_cancel_button_clicked()
-{
+void TourTableWindow::on_cancel_button_clicked() {
     this->close();
     emit firstWindow();
 }
