@@ -25,6 +25,7 @@ SOURCES += \
     mainwindow.cpp \
     tour.cpp \
     tourcontroller.cpp \
+    tourtablewindow.cpp \
     tourwindow.cpp \
     user.cpp
 
@@ -38,11 +39,13 @@ HEADERS += \
     mainwindow.h \
     tour.h \
     tourcontroller.h \
+    tourtablewindow.h \
     tourwindow.h \
     user.h
 
 FORMS += \
     mainwindow.ui \
+    tourtablewindow.ui \
     tourwindow.ui
 
 # Default rules for deployment.

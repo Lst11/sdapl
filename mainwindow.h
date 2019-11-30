@@ -5,6 +5,7 @@
 #include <string>
 #include <hostelcontroller.h>
 #include <tourwindow.h>
+#include <tourtablewindow.h>
 #include <flightcontroller.h>
 
 using namespace std;
@@ -40,9 +41,12 @@ private
 
     void on_table_view_doubleClicked(const QModelIndex &index);
 
+    void on_show_tours_clicked();
+
 private:
     Ui::MainWindow *ui;
     TourWindow *secondWindow;
+    TourTableWindow *thirdWindow;
     QSqlDatabase db;
     HostelController *hostelController;
     FlightController *flightController;

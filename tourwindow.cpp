@@ -34,9 +34,6 @@ void TourWindow::on_flight_table_view_doubleClicked(const QModelIndex &index) {
     countPrice();
 }
 
-
-
-
 void TourWindow::on_hostel_table_view_doubleClicked(const QModelIndex &index) {
     qDebug() << "TourWindow  - hostel and here we are";
 
